@@ -14,4 +14,3 @@ export {
     updateFrontend
 }
 
-alert("this is now running")
