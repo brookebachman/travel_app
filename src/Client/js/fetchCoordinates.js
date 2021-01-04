@@ -22,18 +22,21 @@ const fetchCoordinates = async (event) => {
     today = mm + '/' + dd + '/' + yyyy;
    
     let newA = today.split("/")
-    console.log(newA)
     let day = newA[1]
-    console.log(returnDate())
     let currentDate = returnDate()
+    findOutHowFarAwayTheTripIs(currentDate, day, coordData)
 
-     if (Math.abs(currentDate[1] - day) < 7){
+     
+};
+
+function findOutHowFarAwayTheTripIs(currentDate, day, coordData){
+    if (Math.abs(currentDate[1] - day) < 7){
         Client.fetchWeatherDataCurrent(coordData, date)
     } else {
-        console.log("it is more than 7")
+        Client.fetchWeatherDataWeek(coordData)
     }
 	
-};
+}
 
 function returnZipcode(){
     const zipcode = document.getElementById('zipcode').value;
@@ -47,7 +50,6 @@ function returnDate(){
     array.unshift(day)
     let year = array.pop()
     array.unshift(year)
-    
     return array
 }
 
