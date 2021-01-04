@@ -28,21 +28,6 @@ function performAction(event) {
 //Weatherbit API for you to see how another API accomplishes the same goals. Weatherbit API has one problem, it only takes in coordinates for weather data -- it’s that specific. So, we’ll need to get those coordinates from the Geonames API. Once we have all of this data, we’ll want to display an image of the location entered; for this, we will be using the Pixabay API.
 
 
-const fetchWeatherDataCurrent = async (coordData) => {
-    const weatherData = {}
-    const apikey = process.env.API_KEY_WEATHERBIT
-    const url = `https://api.weatherbit.io/v2.0/current?&lat=${coordData.lat}&lon=${coordData.lon}&key=${apikey}`
-    const response = await fetch(url)
-    try {
-        const data = await response.json()
-        weatherData = {weather: data}
-    } catch (error){
-        console.log(error, "error from weatherbit api")
-    }
-    return weatherData
-    
-
-}
 
 const fetchWeatherDataWeek = async (coordData) => {
     const weatherWeekData = {}
