@@ -7,10 +7,10 @@ const WorkboxPlugin = require("workbox-webpack-plugin");
 module.exports = {
     mode: 'production',
     devtool: 'source-map',
-    entry: './src/Client/index.js',
+    entry: './src/client/index.js',
     output: {
         libraryTarget: 'var',
-        library: 'client'
+        library: 'Client'
     },
     module : {
         rules: [
@@ -28,7 +28,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/Client/views/index.html',
+            template: './src/client/views/index.html',
             filename: './index.html',
         }),
         new MiniCssExtractPlugin({ filename: "main.css" }),
