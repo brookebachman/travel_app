@@ -5,6 +5,7 @@ import {changeTime} from './js/changeTime.js'
 import {updateFrontend} from './js/updateFrontend.js'
 import {fetchWeatherDataCurrent} from './js/fetchWeatherDataCurrent.js'
 import {fetchWeatherDataWeek} from './js/fetchWeatherDataWeek.js'
+import {fetchCoordinates} from './js/fetchVacationPhoto.js'
 
 export {
     fetchCoordinates,
@@ -13,6 +14,7 @@ export {
     postData,
     changeDate,
     changeTime,
-    updateFrontend
+    updateFrontend,
+    fetchVacationPhotos
 }
 
