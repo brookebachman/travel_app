@@ -13,7 +13,8 @@ app.use(bodyParser.json());
 // Cors for cross origin allowance
 const cors = require('cors');
 app.use(cors());
-
+const dotenv = require('dotenv').config()
+dotenv.config()
 app.get('/getData', sendData)
 function sendData (req, res) {
     res.send(newData);
