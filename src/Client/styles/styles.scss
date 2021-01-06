@@ -1,5 +1,13 @@
-html {
+
+@import url('https://fonts.googleapis.com/css2?family=Yellowtail&display=swap');
+
+
+$main-font: 'Yellowtail', cursive;
+
+html,body {
 	margin: 0;
+	background: linear-gradient(0deg, rgba(50,172,205,1) 0%, rgba(199,137,170,1) 50%, rgba(238,220,132,1) 100%);
+	height: 105vh;
 	
 }
 
@@ -7,12 +15,16 @@ html {
 	grid-template-columns: 1fr 1fr 1fr;
 	grid-template-rows: 1fr 1fr;
 	grid-template-areas: left mid right lowleft midlow rightlow;
-	background-color: burlywood;
-	height: 110vh;
+	font-family: $main-font;
+	font-size: 30px;
+	
 }
 
 #form-container{
 	grid-area: mid;
-	border: 1px black solid;
+	border: 8px white dotted;
+	padding: 20px;
+	font-size: 20px;
+	font-family: sans-serif;
 }
 

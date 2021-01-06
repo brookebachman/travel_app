@@ -7,6 +7,8 @@ import {fetchWeatherDataWeek} from './js/fetchWeatherDataWeek.js'
 import {fetchVacationPhoto} from './js/fetchVacationPhoto.js'
 import '../Client/styles/styles.scss'
 
+
+
 export {
     fetchCoordinates,
     fetchWeatherDataCurrent,
