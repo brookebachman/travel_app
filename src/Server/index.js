@@ -31,7 +31,7 @@ app.get('/', function(){
 })
 
 app.post('/test', async function (req, res) {
-	console.log('hit route post test route');
+	console.log('hit route for geonames api');
 	const apikey = 'bbachman';
 	console.log(apikey);
 	const Url = `http://api.geonames.org/postalCodeSearchJSON?postalcode=${req.body.zipcode}&maxRows=10&username=${apikey}`;
@@ -50,3 +50,9 @@ app.post('/test', async function (req, res) {
 		console.log(error);
 	}
 });
+
+app.post('/weatherbit', async function(req, res){
+  console.log("hit weatherbit")
+  const apikey ='15232fa7a4cc4f9daf72453c6c5453dc'
+  const url = `https://api.weatherbit.io/v2.0/current?&lat=${lat}&lon=${lng}&key=${apikey}`
+})

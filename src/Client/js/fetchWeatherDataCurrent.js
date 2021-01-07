@@ -8,7 +8,7 @@ const fetchWeatherDataCurrent = async (lat, lng) => {
     try {
         let data = await response.json()
         weatherData = {weather: data}
-        console.log(data, "fetch coords data")
+        console.log(data.data, "fetch coords data")
     } catch (error){
         console.log(error, "error from weatherbit api")
     }
