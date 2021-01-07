@@ -7,7 +7,7 @@ const fetchCoordinates = async (event) => {
 	//this will return coordinates
 	let response = await fetch(url);
 	try {
-		let data = response.json();
+		let data = await response.json();
 		coordData = { coordinates: data };
 		console.log(coordData.data, 'zipcode project data');
 	
