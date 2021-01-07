@@ -1,6 +1,6 @@
 const fetchWeatherDataWeek = async (lat, lng) => {
 	console.log('fetch Weather data current is running');
-	const url = 'http://localhost:8081/weatherbitcurrent';
+	const url = 'http://localhost:8081/weatherbitweek';
 	const data = await fetch(url, {
 		method: 'POST',
 		headers: {
