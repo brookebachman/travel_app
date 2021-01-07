@@ -1,7 +1,7 @@
 
 const fetchWeatherDataCurrent = async (lat, lng) => {
     console.log("fetch Weather data current is running")
-    const url = 'http://localhost:8081/weatherbit'
+    const url = 'http://localhost:8081/weatherbitcurrent'
     const data = await fetch(url, {
 		method: 'POST',
 		headers: {
@@ -13,7 +13,7 @@ const fetchWeatherDataCurrent = async (lat, lng) => {
 		}),
 	})
 		.then((resp) => resp.json())
-		.then((data) => console.log(data))
+		.then((data) => console.log("current data", data))
     // const apikey = '15232fa7a4cc4f9daf72453c6c5453dc'
     // const url = `https://api.weatherbit.io/v2.0/current?&lat=${lat}&lon=${lng}&key=${apikey}`
     // const response = await fetch(url)
