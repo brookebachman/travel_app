@@ -1,21 +1,31 @@
-const fetchCoordinates = async (event) => {
+const fetchCoordinates = async (event, defaultText, defaultDate) => {
 	event.preventDefault();
 	console.log("fetch coords running")
 	const zipcode = defaultText || returnZipcode()
 	const date = defaultDate || returnDate()
-	const Url = 'http://localhost:8081/test'
+	const url = 'http://localhost:8081/test'
 	const data = await fetch(url, {
 		method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				date: date
+				zipcode: zipcode
 			}),
 		})
 			.then((resp) => resp.json())
-			Client.postToFrontend(data);
-			return data
+			.then((data) => console.log(data))
+			// let today = new Date();
+			// let dd = String(today.getDate()).padStart(2, '0');
+			// let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+			// let yyyy = today.getFullYear();
+			// today = mm + '/' + dd + '/' + yyyy;
+			// let newA = today.split('/');
+			// let day = newA[1];
+			// let currentDate = returnDate();
+			// findOutHowFarAwayTheTripIs(currentDate, day, lat, lng);
+			// Client.postToFrontend(data);
+			// return data
 }
 	
 	// let coordData = {};
@@ -47,13 +57,13 @@ const fetchCoordinates = async (event) => {
 	
 //};
 
-function findOutHowFarAwayTheTripIs(currentDate, day, lat,lng) {
-	if (Math.abs(currentDate[1] - day) < 7) {
-		Client.fetchWeatherDataCurrent(lat,lng);
-	} else {
-		Client.fetchWeatherDataWeek(lat, lng);
-	}
-}
+// function findOutHowFarAwayTheTripIs(currentDate, day, lat,lng) {
+// 	if (Math.abs(currentDate[1] - day) < 7) {
+// 		Client.fetchWeatherDataCurrent(lat,lng);
+// 	} else {
+// 		Client.fetchWeatherDataWeek(lat, lng);
+// 	}
+// }
 
 function returnZipcode() {
 	const zipcode = document.getElementById('zipcode').value;

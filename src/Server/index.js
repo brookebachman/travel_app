@@ -13,8 +13,10 @@ app.use(bodyParser.json());
 // Cors for cross origin allowance
 const cors = require('cors');
 app.use(cors());
-const dotenv = require('dotenv').config()
+const dotenv = require('dotenv')
 dotenv.config()
+const fetch = require('node-fetch');
+
 app.get('/getData', sendData)
 function sendData (req, res) {
     res.send(newData);
@@ -30,9 +32,9 @@ app.get('/', function(){
 
 app.post('/test', async function (req, res) {
 	console.log('hit route post test route');
-	const apiKey = process.env.API_KEY_GEO_NAMES;
-	console.log(apiKey);
-	const Url = `http://api.geonames.org/postalCodeSearchJSON?postalcode=${zipcode}&maxRows=10&username=${apikey}`;
+	const apikey = 'bbachman';
+	console.log(apikey);
+	const Url = `http://api.geonames.org/postalCodeSearchJSON?postalcode=${req.body.zipcode}&maxRows=10&username=${apikey}`;
 	let response = await fetch(Url);
 	try {
 		let data = await response.json();
