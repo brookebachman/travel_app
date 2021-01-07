@@ -24,20 +24,27 @@ function sendData (req, res) {
 const port = 8081;
 const server = app.listen(port, ()=>{console.log(`running on localhost: ${port}`)})
 
-
-app.post('/addData', function(req, res){
-  console.log(req.body)
-  newEntry = {
-    zipcode: req.body.zipcode,
-    place: req.body.place, 
-    weather: req.body.weather,
-    temp: req.body.temp,
-    min: req.body.min,
-    max: req.body.max,
-    date: req.body.date,
-    time: req.body.time
-  }
-  newData = newEntry;
-  res.send(newData)
-  console.log(newData)
+app.get('/', function(){
+  res.sendFile('dist/index.html')
 })
+
+app.post('/test', async function (req, res) {
+	console.log('hit route post test route');
+	const apiKey = process.env.API_KEY_GEO_NAMES;
+	console.log(apiKey);
+	const Url = `http://api.geonames.org/postalCodeSearchJSON?postalcode=${zipcode}&maxRows=10&username=${apikey}`;
+	let response = await fetch(Url);
+	try {
+		let data = await response.json();
+		console.log(data);
+		const apiData = {};
+		apiData.city = coordinates.postalCodes[0].placename;
+		apiData.date = req.body.date;
+		apiData.lat = coordinates.postalCodes[0].lat;
+		apiData.lon = coordinates.postalCodes[0].lng;
+		console.log(apiData);
+		res.send(apiData);
+	} catch (error) {
+		console.log(error);
+	}
+});
