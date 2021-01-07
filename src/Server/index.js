@@ -40,10 +40,10 @@ app.post('/test', async function (req, res) {
 		let data = await response.json();
 		console.log(data);
 		const apiData = {};
-		apiData.city = coordinates.postalCodes[0].placename;
+		apiData.city = data.postalCodes[0].placeName;
 		apiData.date = req.body.date;
-		apiData.lat = coordinates.postalCodes[0].lat;
-		apiData.lon = coordinates.postalCodes[0].lng;
+		apiData.lat = data.postalCodes[0].lat;
+		apiData.lon = data.postalCodes[0].lng;
 		console.log(apiData);
 		res.send(apiData);
 	} catch (error) {
