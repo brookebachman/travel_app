@@ -11,20 +11,31 @@ html,body {
 	
 }
 
-#main-container{
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-template-rows: 1fr 1fr;
-	grid-template-areas: left mid right lowleft midlow rightlow;
+#title {
 	font-family: $main-font;
-	font-size: 30px;
+	font-size: 50px;
+	grid-area: top2;
+	text-align: center;
+}
+
+#main-container{
+	display:grid;
+	padding: 20px;
+	grid-template-columns: 1fr 2fr 1fr;
+	grid-template-rows: 1fr 2fr 2fr;
+	grid-template-areas: 'top1 top2 top3' 'left mid right' 'lowleft midbottom rightlow';
 	
+	
+}
+#picture {
+	grid-area: left;
 }
 
 #form-container{
 	grid-area: mid;
 	border: 8px white dotted;
 	padding: 20px;
-	font-size: 20px;
+	font-size: 25px;
 	font-family: sans-serif;
 }
 
