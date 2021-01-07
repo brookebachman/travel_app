@@ -1,8 +1,8 @@
-const fetchWeatherDataWeek = async (coordData) => {
+const fetchWeatherDataWeek = async (lat, lng) => {
     console.log("fetch weather data week is running")
-    const weatherWeekData = {}
+    let weatherWeekData = {}
     const apikey = process.env.API_KEY_WEATHERBIT
-    const url = `https://api.weatherbit.io/v2.0/forecast/daily?&lat=${coordData.lat}&lon=${coordData.lon}&key=${apikey}`
+    const url = `https://api.weatherbit.io/v2.0/forecast/daily?&lat=${lat}&lon=${lng}&key=${apikey}`
     const response = await fetch(url)
     try {
         const data = await response.json()

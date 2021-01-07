@@ -9,7 +9,8 @@ const fetchCoordinates = async (event) => {
 	try {
 		let data = await response.json();
 		coordData = { coordinates: data };
-		console.log(coordData.data, 'zipcode project data');
+		let lng = coordData.coordinates.postalCodes[0].lng
+		let lat = coordData.coordinates.postalCodes[0].lat
 	
 		let today = new Date();
 		let dd = String(today.getDate()).padStart(2, '0');
@@ -19,7 +20,7 @@ const fetchCoordinates = async (event) => {
 		let newA = today.split('/');
 		let day = newA[1];
 		let currentDate = returnDate();
-		findOutHowFarAwayTheTripIs(currentDate, day, coordData);
+		findOutHowFarAwayTheTripIs(currentDate, day, lat, lng);
 		
 	} catch (error) {
 		console.log(error, 'error from geonames');
@@ -27,11 +28,11 @@ const fetchCoordinates = async (event) => {
 	
 };
 
-function findOutHowFarAwayTheTripIs(currentDate, day, coordData) {
+function findOutHowFarAwayTheTripIs(currentDate, day, lat,lng) {
 	if (Math.abs(currentDate[1] - day) < 7) {
-		Client.fetchWeatherDataCurrent(coordData, date);
+		Client.fetchWeatherDataCurrent(lat,lng);
 	} else {
-		Client.fetchWeatherDataWeek(coordData);
+		Client.fetchWeatherDataWeek(lat, lng);
 	}
 }
 
