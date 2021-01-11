@@ -60,7 +60,14 @@ app.post('/weatherbitcurrent', async function(req, res){
   let response = await fetch(url)
   try{
     let data = await response.json()
-    console.log(data)
+    console.log(data, "this is for current data")
+    const apiData = {}
+    apiData.high = data.max_temp
+    apiData.low = data.low_temp
+    apiData.clouds = data.clouds
+    apiData.snow = data.snow,
+    apiData.date = req.body.date
+    
 
 
   }catch (error){
@@ -75,7 +82,15 @@ app.post('/weatherbitweek', async function(req, res){
   let response = await fetch(url)
   try{
     let data = await response.json()
-    console.log(data)
+    console.log(data, "this is week data")
+    apiData ={}
+    apiData.high = data.max_temp
+    apiData.low = data.low_temp
+    apiData.clouds = data.clouds
+    apiData.snow = data.snow,
+    apiData.date = req.body.date,
+    apiData.week_high = data.app_max_temp
+    apiData.week_low = data.app_min_temp
 
   }catch (error){
     console.log(error)
@@ -84,6 +99,9 @@ app.post('/weatherbitweek', async function(req, res){
 
 app.post('/getData', async function(req,res){
   newEntry = {
+    date: req.body.date,
+    endDate: req.body.date,
+    city: req.body.city,
 
   }
 })

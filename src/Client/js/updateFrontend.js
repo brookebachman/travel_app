@@ -3,6 +3,8 @@ const updateFrontend = async () => {
 	const request = await fetch("http://localhost:3200/getData")
 	try {
 		const projectData = await request.json()
+		const entryHolder = document.getElementById("entry-holder")
+		const results = document.createElement('div')
 		entryHolder.appendChild(results);
 		console.log('project data from the backend', projectData);
 		const temp = document.getElementById('0');
