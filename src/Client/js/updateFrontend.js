@@ -1,4 +1,5 @@
 const updateFrontend = async () => {
+	console.log("update frontend is running")
 	const request = await fetch("http://localhost:3200/getData")
 	try {
 		const projectData = await request.json()

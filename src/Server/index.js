@@ -41,7 +41,8 @@ app.post('/test', async function (req, res) {
 	
 		const apiData = {};
 		apiData.city = data.postalCodes[0].placeName;
-		apiData.date = req.body.date;
+    apiData.date = req.body.date;
+    apiData.endDate = req.body.endDate
 		apiData.lat = data.postalCodes[0].lat;
 		apiData.lon = data.postalCodes[0].lng;
 	
@@ -78,6 +79,12 @@ app.post('/weatherbitweek', async function(req, res){
 
   }catch (error){
     console.log(error)
+  }
+})
+
+app.post('/getData', async function(req,res){
+  newEntry = {
+
   }
 })
 

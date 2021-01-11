@@ -13,7 +13,9 @@ const fetchWeatherDataCurrent = async (lat, lng) => {
 		}),
 	})
 		.then((resp) => resp.json())
-		.then((data) => console.log("current data", data))
+        .then((data) => 
+        Client.updateFrontend(data)
+        )
     // const apikey = '15232fa7a4cc4f9daf72453c6c5453dc'
     // const url = `https://api.weatherbit.io/v2.0/current?&lat=${lat}&lon=${lng}&key=${apikey}`
     // const response = await fetch(url)

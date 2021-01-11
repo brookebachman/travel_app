@@ -3,6 +3,7 @@ const fetchCoordinates = async (event, defaultText, defaultDate) => {
 	console.log('fetch coords running');
 	const zipcode = defaultText || returnZipcode();
 	const date = defaultDate || returnDate();
+	const endDate = defaultDate || returnEndDate()
 	const url = 'http://localhost:8081/test';
 	const data = await fetch(url, {
 		method: 'POST',
@@ -11,7 +12,8 @@ const fetchCoordinates = async (event, defaultText, defaultDate) => {
 		},
 		body: JSON.stringify({
 			zipcode: zipcode,
-			date: date
+			date: date,
+			end: endDate
 		}),
 	})
 		.then((resp) => resp.json())
@@ -46,6 +48,16 @@ function returnZipcode() {
 
 function returnDate() {
 	const date = document.getElementById('date').value;
+	let array = date.split('-');
+	let day = array.pop();
+	array.unshift(day);
+	let year = array.pop();
+	array.unshift(year);
+	return array;
+}
+
+function returnEndDate() {
+	const date = document.getElementById('end-date').value;
 	let array = date.split('-');
 	let day = array.pop();
 	array.unshift(day);
