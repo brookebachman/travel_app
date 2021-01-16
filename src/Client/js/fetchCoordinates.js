@@ -13,7 +13,8 @@ const fetchCoordinates = async (event, defaultText, defaultDate) => {
 		body: JSON.stringify({
 			zipcode: zipcode,
 			date: date,
-			end: endDate
+			end: endDate,
+			country: 'US'
 		}),
 	})
 		.then((resp) => resp.json())
