@@ -1,22 +1,24 @@
-import { updateFrontend } from "./updateFrontend";
 
-const fetchWeatherDataWeek = async (lat, lng) => {
+const fetchWeatherDataWeek = async (lon, lat) => {
 	console.log('fetch Weather data current is running');
 	const url = 'http://localhost:8081/weatherbitweek';
-	const data = await fetch(url, {
+	const response = await fetch(url, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify({
 			lat: lat,
-			lon: lng,
+			lon: lon,
 		}),
 	})
-		.then((resp) => resp.json())
-		.then((data) => 
-		Cleint.updateFrontend(data)
-		);
+	try {
+		const weatherData = await response.json()
+		Client.updateFrontend(weatherData)
+	} catch (error){
+		console.log(error)
+	}
+		
 	// console.log("fetch weather data week is running")
 	// let weatherWeekData = {}
 	// const apikey = process.env.API_KEY_WEATHERBIT
