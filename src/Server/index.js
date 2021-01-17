@@ -44,7 +44,7 @@ app.post('/test', async function (req, res) {
 });
 
 app.post('/weatherbitcurrent', async function(req, res){
-  console.log(req)
+  console.log(req.body, "req.body")
   console.log("hit weatherbit current forecast")
   const apikey = process.env.API_KEY_WEATHERBIT
   const url = `https://api.weatherbit.io/v2.0/current?&lat=${req.body.lat}&lon=${req.body.lon}&key=${apikey}`
@@ -52,8 +52,10 @@ app.post('/weatherbitcurrent', async function(req, res){
   try{
     let response = await fetch(url)
     let result = await response.json()
-    const data = result.data[0]
-    console.log(data, "this is for current data weather")
+   
+    const data = result.data
+    
+    console.log(result, "this is for current data weather")
     res.json(data)
 
   }catch (error){
@@ -69,8 +71,10 @@ app.post('/weatherbitweek', async function(req, res){
   try{
     let response = await fetch(url)
     let result = await response.json()
-    const data = result.data[0]
-    console.log(data, "this is week data")
+   
+    const data = result.data
+   
+    console.log(result, "this is week data")
    res.json(data)
 
   }catch (error){

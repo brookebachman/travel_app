@@ -19,7 +19,7 @@ const fetchCoordinates = async (event, defaultText, defaultDate) => {
 	})
 		.then((resp) => resp.json())
 		.then((data) => {
-			console.log(data, "fetch coords data")
+			const newData = data.postalCodes[0]
 			let today = new Date();
 			let dd = String(today.getDate()).padStart(2, '0');
 			let mm = String(today.getMonth() + 1).padStart(2, '0');
@@ -28,7 +28,7 @@ const fetchCoordinates = async (event, defaultText, defaultDate) => {
 			let newA = today.split('/');
 			let day = newA[1];
 			let currentDate = returnDate();
-			findOutHowFarAwayTheTripIs(currentDate, day, data.lon, data.lat);
+			findOutHowFarAwayTheTripIs(currentDate, day, newData.lng, newData.lat);
 		});
 
 };

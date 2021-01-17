@@ -9,7 +9,7 @@ const fetchWeatherDataCurrent = async (lon, lat) => {
 		body: JSON.stringify({
 			lat: lat,
 			lon: lon,
-		}),
+		})
 	});
 	try {
 		const weatherData = await response.json();
