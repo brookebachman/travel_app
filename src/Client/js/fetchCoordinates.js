@@ -19,6 +19,7 @@ const fetchCoordinates = async (event, defaultText, defaultDate) => {
 	})
 		.then((resp) => resp.json())
 		.then((data) => {
+			console.log(data, "fetch coords data")
 			let today = new Date();
 			let dd = String(today.getDate()).padStart(2, '0');
 			let mm = String(today.getMonth() + 1).padStart(2, '0');
@@ -30,11 +31,10 @@ const fetchCoordinates = async (event, defaultText, defaultDate) => {
 			findOutHowFarAwayTheTripIs(currentDate, day, data.lon, data.lat);
 		});
 
-	// Client.postToFrontend(data);
-	// return data
 };
 
 function findOutHowFarAwayTheTripIs(currentDate, day, lon ,lat) {
+	console.log("find out how far away")
 	if (Math.abs(currentDate[1] - day) < 7) {
 		Client.fetchWeatherDataCurrent(lon, lat);
 	} else {
@@ -66,34 +66,6 @@ function returnEndDate() {
 	array.unshift(year);
 	return array;
 }
-// let coordData = {};
-// const zipcode = returnZipcode();
-// const apikey = 'bbachman';
-// const url = `http://api.geonames.org/postalCodeSearchJSON?postalcode=${zipcode}&maxRows=10&username=${apikey}`;
-// //this will return coordinates
-// let response = await fetch(url);
-// try {
-// 	let data = await response.json();
-// 	coordData = { coordinates: data };
-// 	console.log(coordData.coordinates)
-// 	let lng = coordData.coordinates.postalCodes[0].lng
-// 	let lat = coordData.coordinates.postalCodes[0].lat
-
-// 	let today = new Date();
-// 	let dd = String(today.getDate()).padStart(2, '0');
-// 	let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-// 	let yyyy = today.getFullYear();
-// 	today = mm + '/' + dd + '/' + yyyy;
-// 	let newA = today.split('/');
-// 	let day = newA[1];
-// 	let currentDate = returnDate();
-// 	findOutHowFarAwayTheTripIs(currentDate, day, lat, lng);
-
-// } catch (error) {
-// 	console.log(error, 'error from geonames');
-// }
-
-//};
 
 
 
