@@ -28,18 +28,21 @@ const fetchCoordinates = async (event, defaultText, defaultDate) => {
 			let newA = today.split('/');
 			let day = newA[1];
 			let currentDate = returnDate();
-			findOutHowFarAwayTheTripIs(currentDate, day, newData.lng, newData.lat);
+			let endDate = returnEndDate()
+			findOutHowFarAwayTheTripIs(currentDate, endDate, day, newData.lng, newData.lat);
 		});
 
 };
 
-function findOutHowFarAwayTheTripIs(currentDate, day, lon ,lat) {
+function findOutHowFarAwayTheTripIs(currentDate,endDate, day, lon ,lat) {
 	console.log("find out how far away")
+	let lengthTrip = Math.abs(currentDate[1] - endDate[1])
 	if (Math.abs(currentDate[1] - day) < 7) {
-		Client.fetchWeatherDataCurrent(lon, lat);
+		Client.fetchWeatherDataCurrent(lon, lat, lengthTrip);
 	} else {
-		Client.fetchWeatherDataWeek(lon, lat);
+		Client.fetchWeatherDataWeek(lon, lat, lengthTrip);
 	}
+	
 }
 
 function returnZipcode() {

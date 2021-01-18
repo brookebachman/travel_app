@@ -1,4 +1,4 @@
-const fetchWeatherDataWeek = async (lon, lat) => {
+const fetchWeatherDataWeek = async (lon, lat, lengthTrip) => {
 	console.log('fetch Weather data cweek is running');
 	const url = 'http://localhost:8081/weatherbitweek';
 	const response = await fetch(url, {
@@ -13,7 +13,7 @@ const fetchWeatherDataWeek = async (lon, lat) => {
 	});
 	try {
 		const weatherData = await response.json();
-		Client.updateFrontend(weatherData);
+		Client.updateFrontend(weatherData, lengthTrip);
 	} catch (error) {
 		console.log(error);
 	}
