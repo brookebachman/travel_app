@@ -21,10 +21,9 @@ html,body {
 #main-container{
 	display:grid;
 	padding: 20px;
-	grid-template-columns: 1fr 2fr 1fr;
-	grid-template-rows: 1fr 2fr 2fr;
+	grid-template-columns: 1fr 4fr 1fr;
+	grid-template-rows: 1fr 4fr 4fr;
 	grid-template-areas: 'top1 top2 top3' 'left mid right' 'lowleft midbottom rightlow';
-	
 	
 }
 #picture {
@@ -37,6 +36,8 @@ html,body {
 	padding: 20px;
 	font-size: 25px;
 	font-family: sans-serif;
+	margin: 20px;
+	text-align: center;
 }
 
 #entry-holder {
@@ -45,6 +46,7 @@ html,body {
 	padding: 20px;
 	font-size: 25px;
 	font-family: sans-serif;
+	margin: 20px;
 }
 
 
