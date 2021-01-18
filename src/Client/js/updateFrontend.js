@@ -15,7 +15,7 @@ const updateFrontend = async (data, lengthTrip) => {
 	mainDiv.removeChild(form)
 	mainDiv.appendChild(photo)
 	photo.style.backgroundImage = searchImages()
-	searchImages()
+	
 	littleDiv.id = "entry-holder"
 	littleDiv.appendChild(location)
 	
