@@ -1,3 +1,5 @@
+import fetch from "node-fetch"
+
 const updateFrontend = async (data, lengthTrip) => {
 	console.log("update frontend is running", data)
 	const mainDiv = document.getElementById("main-container")
@@ -8,8 +10,12 @@ const updateFrontend = async (data, lengthTrip) => {
 	const clouds = document.createElement("p")
 	const snow = document.createElement("p")
 	const uv = document.createElement("p")
+	const photo = document.createElement('img')
 	mainDiv.appendChild(littleDiv)
 	mainDiv.removeChild(form)
+	mainDiv.appendChild(photo)
+	photo.src = searchImages()
+	searchImages()
 	littleDiv.id = "entry-holder"
 	littleDiv.appendChild(location)
 	
@@ -22,7 +28,21 @@ const updateFrontend = async (data, lengthTrip) => {
 	
 }
 
-//function 
+const searchImages = async () => {
+	const element = 'yellow+flower'
+	const apikey = "19614841-f24f6c26e68114f6eb3490d99"
+	const url = `https://pixabay.com/api/?key=${apikey}&q=${element}&image_type=photo`
+	
+	try {
+		const data = await fetch(url)
+		let response = await data.json()
+		return response.hits[0].pageURL
+
+	}catch (error){
+		console.log(error)
+	}
+	
+}
 
 
 
