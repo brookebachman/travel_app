@@ -22,12 +22,12 @@ html,body {
 	display:grid;
 	padding: 20px;
 	grid-template-columns: 1fr 4fr 1fr;
-	grid-template-rows: 1fr 4fr 4fr;
+	grid-template-rows: 1fr 2fr 4fr;
 	grid-template-areas: 'top1 top2 top3' 'left mid right' 'lowleft midbottom rightlow';
 	
 }
 #picture {
-	grid-area: left;
+	grid-area: mid;
 }
 
 #form-container{
