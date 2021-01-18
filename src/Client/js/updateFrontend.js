@@ -10,11 +10,11 @@ const updateFrontend = async (data, lengthTrip) => {
 	const clouds = document.createElement("p")
 	const snow = document.createElement("p")
 	const uv = document.createElement("p")
-	const photo = document.createElement('img')
+	const photo = document.getElementById('picture')
 	mainDiv.appendChild(littleDiv)
 	mainDiv.removeChild(form)
 	mainDiv.appendChild(photo)
-	photo.src = searchImages()
+	photo.style.backgroundImage = searchImages()
 	searchImages()
 	littleDiv.id = "entry-holder"
 	littleDiv.appendChild(location)
@@ -25,14 +25,12 @@ const updateFrontend = async (data, lengthTrip) => {
 		location.innerHTML = `Your trip to ${data[0].city_name} is ${lengthTrip} days long`
 	}
 	
-	
 }
 
 const searchImages = async () => {
 	const element = 'yellow+flower'
 	const apikey = "19614841-f24f6c26e68114f6eb3490d99"
 	const url = `https://pixabay.com/api/?key=${apikey}&q=${element}&image_type=photo`
-	
 	try {
 		const data = await fetch(url)
 		let response = await data.json()
