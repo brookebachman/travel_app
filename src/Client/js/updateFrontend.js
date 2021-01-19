@@ -10,11 +10,11 @@ const updateFrontend = async (data, lengthTrip) => {
 	const clouds = document.createElement("p")
 	const snow = document.createElement("p")
 	const uv = document.createElement("p")
-	const photo = document.getElementById('picture')
+	const photo = document.getElementById('picture').innerHTML = `<img src=${await searchImages()}>`
 	mainDiv.appendChild(littleDiv)
 	mainDiv.removeChild(form)
 	mainDiv.appendChild(photo)
-	photo.style.backgroundImage = searchImages()
+	
 	
 	littleDiv.id = "entry-holder"
 	littleDiv.appendChild(location)
