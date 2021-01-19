@@ -28,6 +28,7 @@ html,body {
 }
 #picture {
 	grid-area: mid;
+	padding: 20px;
 }
 
 #form-container{
@@ -50,5 +51,11 @@ html,body {
 	margin: 20px;
 	
 }
+// @media(width ){
 
+// }
+img {
+	height: 350px;
+	width: 500px;
+}
 

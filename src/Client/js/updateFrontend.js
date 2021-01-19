@@ -10,12 +10,13 @@ const updateFrontend = async (data, lengthTrip) => {
 	const clouds = document.createElement("p")
 	const snow = document.createElement("p")
 	const uv = document.createElement("p")
-	const photo = document.getElementById('picture').innerHTML = `<img src=${await searchImages()}>`
-	mainDiv.appendChild(littleDiv)
-	mainDiv.removeChild(form)
+	const photo = document.getElementById('picture')
 	mainDiv.appendChild(photo)
+	photo.innerHTML=`<img src=${await searchImages()}>`
 	
+	mainDiv.removeChild(form)
 	
+	mainDiv.appendChild(littleDiv)
 	littleDiv.id = "entry-holder"
 	littleDiv.appendChild(location)
 	
@@ -34,7 +35,7 @@ const searchImages = async () => {
 	try {
 		const data = await fetch(url)
 		let response = await data.json()
-		return response.hits[0].pageURL
+		return response.hits[0].largeImageURL
 
 	}catch (error){
 		console.log(error)
