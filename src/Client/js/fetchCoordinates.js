@@ -36,10 +36,13 @@ const fetchCoordinates = async (event, defaultText, defaultDate) => {
 
 function findOutHowFarAwayTheTripIs(currentDate,endDate, day, lon ,lat) {
 	console.log("find out how far away")
+	
 	let lengthTrip = Math.abs(currentDate[1] - endDate[1])
 	if (lengthTrip < 1){
 		lengthTrip = 1
 	}
+	// } else if (Math.abs(lengthTrip)- 30 > )
+	//check if the length of trip is greater than the startdate - 30. then we know we need to keep adding the dates.
 	if (Math.abs(currentDate[1] - day) < 7) {
 		Client.fetchWeatherDataCurrent(lon, lat, lengthTrip);
 	} else {

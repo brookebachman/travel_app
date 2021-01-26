@@ -7,7 +7,7 @@ $main-font: 'Yellowtail', cursive;
 html,body {
 	margin: 0;
 	background: linear-gradient(0deg, rgba(50,172,205,1) 0%, rgba(199,137,170,1) 50%, rgba(238,220,132,1) 100%);
-	height: 105vh;
+	height: 115vh;
 	
 }
 
@@ -49,13 +49,42 @@ html,body {
 	font-size: 25px;
 	font-family: sans-serif;
 	margin: 20px;
+	display:grid;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+	grid-template-areas: 'left right' 'leftBottom rightBottom';
 	
 }
-// @media(width ){
 
+// #snow {
+// 	grid-area: right;
 // }
+
+// #uv {
+// 	grid-area: leftBottom;
+// }
+
+// #temp{
+// 	grid-area: rightBottom;
+// }
+
 img {
 	height: 350px;
 	width: 500px;
 }
 
+.card {
+	/* Add shadows to create the "card" effect */
+	box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+	transition: 0.3s;
+  }
+  
+  /* On mouse-over, add a deeper shadow */
+  .card:hover {
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
+  
+  /* Add some padding inside the card container */
+  .container {
+	padding: 2px 16px;
+  }
