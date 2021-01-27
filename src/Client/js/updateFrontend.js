@@ -77,8 +77,9 @@ const searchImages = async (element, second) => {
 				newResults.push(photoTag.largeImageURL);
 			}
 		});
-		console.log(newResults[0])
-		return newResults[0];
+		console.log(typeof newResults[0])
+		
+		return await newResults[0];
 
 		//return response.hits[0].largeImageURL;
 	} catch (error) {
