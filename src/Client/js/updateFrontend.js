@@ -63,6 +63,18 @@ const updateFrontend = async (data, lengthTrip) => {
 	weatherType(data);
 };
 
+const template = (data) => {
+	return `<div class="card" style="width: 18rem;">
+	  <img class="card-img-top" src=${searchImages()} alt="Card image cap">
+	  <div class="card-body">
+	    <h5 class="card-title">Card title</h5>
+		<p class="card-text">It is ${data[0].temp + 32} degrees today.</p>
+		<p class="card-text">It looks like there are ${data[0].weather.description} today.</p>
+	    <a href="#" class="btn btn-primary">Go somewhere</a>
+	  </div>
+	</div>`
+	
+}
 // checkIfSnow = () => {
 // 	if (data[0].snow) {
 // 		snow.innerHTML = `There is ${data[0].snow / 0.039} inches per hour falling. Make sure to dress warm! `;
@@ -122,4 +134,4 @@ const searchImages = async (element, second) => {
 	}
 };
 
-export { updateFrontend };
+export { updateFrontend, template };
