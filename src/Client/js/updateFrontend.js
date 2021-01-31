@@ -23,9 +23,20 @@ const updateFrontend = async (data, lengthTrip) => {
 	littleDiv.appendChild(uv);
 	highTemp.id = 'temp';
 	uv.id = 'uv';
+// 	littleDiv.innerHTML = `
+// 	<div class="card" style="width: 18rem;">
+//   <img class="card-img-top" src=${searchImages()} alt="Card image cap">
+//   <div class="card-body">
+//     <h5 class="card-title">Card title</h5>
+// 	<p class="card-text">It is ${data[0].temp + 32} degrees today.</p>
+// 	<p class="card-text">It looks like there are ${data[0].weather.description} today.</p>
+//     <a href="#" class="btn btn-primary">Go somewhere</a>
+//   </div>
+// </div>`;
 
 	highTemp.innerHTML = `It is ${data[0].temp + 32} degrees today`;
 	uv.innerHTML = `It looks like there are ${data[0].weather.description} today`;
+
 	if (data[0].snow) {
 		snow.innerHTML = `There is ${data[0].snow / 0.039} inches per hour falling. Make sure to dress warm! `;
 	} else {
@@ -38,10 +49,34 @@ const updateFrontend = async (data, lengthTrip) => {
 		tripLength.innerHTML = `Your trip to ${data[0].city_name} is ${lengthTrip} days long`;
 	}
 	photo.innerHTML = `<img src=${searchImages()}>`;
-
+	if (lengthTrip <= 1) {
+		 (tripLength.innerHTML = `Your trip to ${data[0].city_name} is a day trip`);
+	} else {
+		 (tripLength.innerHTML = `Your trip to ${data[0].city_name} is ${lengthTrip} days long`);
+	}
+	if (data[0].snow) {
+		snow.innerHTML = `There is ${data[0].snow / 0.039} inches per hour falling. Make sure to dress warm! `;
+	} else {
+		snow.innerHTML = 'Looks like you are going somewhere warm';
+	}
+	photo.innerHTML = `<img class="card-img-top" src=${searchImages()} `
 	weatherType(data);
 };
 
+// checkIfSnow = () => {
+// 	if (data[0].snow) {
+// 		snow.innerHTML = `There is ${data[0].snow / 0.039} inches per hour falling. Make sure to dress warm! `;
+// 	} else {
+// 		snow.innerHTML = 'Looks like you are going somewhere warm';
+// 	}
+// };
+// // const checkTripLength = (lengthTrip) => {
+// // 	if (lengthTrip <= 1) {
+// // 		return (tripLength.innerHTML = `Your trip to ${data[0].city_name} is a day trip`);
+// // 	} else {
+// // 		return (tripLength.innerHTML = `Your trip to ${data[0].city_name} is ${lengthTrip} days long`);
+// // 	}
+// // };
 const weatherType = (data) => {
 	if (data[0].snow > 1) {
 		searchImages('snow');
@@ -77,8 +112,8 @@ const searchImages = async (element, second) => {
 				newResults.push(photoTag.largeImageURL);
 			}
 		});
-		console.log(typeof newResults[0])
-		
+		console.log(typeof newResults[0]);
+
 		return await newResults[0];
 
 		//return response.hits[0].largeImageURL;
@@ -86,7 +121,5 @@ const searchImages = async (element, second) => {
 		console.log(error);
 	}
 };
-
-
 
 export { updateFrontend };

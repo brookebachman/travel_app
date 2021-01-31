@@ -6,7 +6,7 @@ import {fetchWeatherDataCurrent} from './js/fetchWeatherDataCurrent.js'
 import {fetchWeatherDataWeek} from './js/fetchWeatherDataWeek.js'
 import {fetchVacationPhoto} from './js/fetchVacationPhoto.js'
 import '../Client/styles/styles.scss'
-
+//import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export {
