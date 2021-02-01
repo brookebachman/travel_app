@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const weatherBitWeekFetch = require('./fetchWeatherBitWeek')
 // Initialize the main project folder
 app.use(express.static('dist'));
 // Setup empty JS object to act as endpoint for all routes
@@ -21,7 +22,7 @@ const fetch = require('node-fetch');
 
 
 const port = 8081;
-const server = app.listen(port, ()=>{console.log(`running on localhost: ${port}`)})
+const server = app.listen(port, ()=>{})
 
 app.get('/', function(){
   res.sendFile('dist/index.html')
@@ -61,25 +62,9 @@ app.post('/weatherbitcurrent', async function(req, res){
     console.log(error)
   }
 })
-app.post('/weatherbitweek', async function(req, res){
-  console.log("hit weatherbit week weather api")
-  const apikey = process.env.API_KEY_WEATHERBIT
-  const url = `https://api.weatherbit.io/v2.0/forecast/daily?&lat=${req.body.lat}&lon=${req.body.lon}&key=${apikey}`
-  try{
-    let response = await fetch(url)
-    let result = await response.json()
-    const data = result.data
-    console.log(result, "this is week data")
-   res.json(data)
-
-  }catch (error){
-    console.log(error)
-  }
-})
 
 
+app.post('/weatherbitweek', weatherBitWeekFetch)
 
 
-
-//export {app}
-
+module.exports = {weatherBitWeekFetch}
