@@ -48,7 +48,7 @@ const updateFrontend = async (data, lengthTrip) => {
 	} else {
 		tripLength.innerHTML = `Your trip to ${data[0].city_name} is ${lengthTrip} days long`;
 	}
-	photo.innerHTML = `<img src=${searchImages()}>`;
+	//photo.innerHTML = `<img src=${searchImages()} />`;
 	if (lengthTrip <= 1) {
 		 (tripLength.innerHTML = `Your trip to ${data[0].city_name} is a day trip`);
 	} else {
@@ -59,8 +59,9 @@ const updateFrontend = async (data, lengthTrip) => {
 	} else {
 		snow.innerHTML = 'Looks like you are going somewhere warm';
 	}
-	photo.innerHTML = `<img class="card-img-top" src=${searchImages()} `
-	weatherType(data);
+	const imageSrc = await weatherType(data)
+	photo.innerHTML = `<img class="card-img-top" src=${imageSrc} />`
+	
 };
 
 const template = (data) => {
@@ -89,17 +90,17 @@ const template = (data) => {
 // // 		return (tripLength.innerHTML = `Your trip to ${data[0].city_name} is ${lengthTrip} days long`);
 // // 	}
 // // };
-const weatherType = (data) => {
+const weatherType = async (data) => {
 	if (data[0].snow > 1) {
-		searchImages('snow');
+		return await searchImages('snow');
 	} else if (data[0].precip > 3) {
-		searchImages('rain');
+		return await searchImages('rain');
 	} else if (data[0].clouds > 50) {
-		searchImages('clouds');
+		return await searchImages('clouds');
+	} else {
+		return await searchImages('sun')
 	}
-	// } else if (data[0].clouds <= 25){
-	// 	searchImages(small, clouds)
-	// }
+
 };
 
 const searchImages = async (element, second) => {
