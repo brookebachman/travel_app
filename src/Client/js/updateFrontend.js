@@ -135,4 +135,4 @@ const searchImages = async (element, second) => {
 	}
 };
 
-export { updateFrontend, template };
+export { updateFrontend, template, searchImages };
