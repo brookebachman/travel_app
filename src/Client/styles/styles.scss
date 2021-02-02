@@ -4,12 +4,13 @@ $main-font: 'Yellowtail', cursive;
 html,
 body {
 	margin: 0;
-	background: linear-gradient(
-		0deg,
-		rgba(50, 172, 205, 1) 0%,
-		rgba(199, 137, 170, 1) 50%,
-		rgba(238, 220, 132, 1) 100%
-	);
+	// background: linear-gradient(
+	// 	0deg,
+	// 	rgba(50, 172, 205, 1) 0%,
+	// 	rgba(199, 137, 170, 1) 50%,
+	// 	rgba(238, 220, 132, 1) 100%
+	// );
+	background-color: rgb(215, 215, 159);
 	height: 115vh;
 }
 
@@ -46,14 +47,13 @@ body {
 	#entry-holder {
 		grid-area: midbottom;
 		border: 8px white dotted;
-		padding: 20px;
 		font-size: 25px;
 		font-family: sans-serif;
-		margin: 20px;
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		grid-template-rows: 1fr 1fr;
-		grid-template-areas: 'left right' 'leftBottom rightBottom';
+	padding: 20px;
+		// display: grid;
+		// grid-template-columns: 1fr 1fr;
+		// grid-template-rows: 1fr 1fr;
+		// grid-template-areas: 'left right' 'leftBottom rightBottom';
 	}
 
 	// #snow {
@@ -87,5 +87,10 @@ body {
 	/* Add some padding inside the card container */
 	.container {
 		padding: 2px 16px;
+		margin: 0px;
 	}
 //}
+
+p{
+	font-size: 16px;
+}
