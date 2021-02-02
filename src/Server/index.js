@@ -53,10 +53,10 @@ app.post('/weatherbitcurrent', async function(req, res){
     let response = await fetch(url)
     let result = await response.json()
    
-    const data = result.data
+    
     
     console.log(result, "this is for current data weather")
-    res.json(data)
+    res.json(result)
 
   }catch (error){
     console.log(error)

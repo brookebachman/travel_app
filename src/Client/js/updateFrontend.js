@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 
-const updateFrontend = async (data, lengthTrip) => {
+const updateFrontend = async (results, lengthTrip)=> {
+	const data = results.data
 	const mainDiv = document.getElementById('main-container');
 	const form = document.getElementById('form-container');
 	const littleDiv = document.createElement('div');
@@ -45,13 +46,13 @@ const updateFrontend = async (data, lengthTrip) => {
 	
 	};
 
-	const templateWeather = (data) => {
-		
+	const templateWeather = (data, lengthTrip) => {
+		console.log(data, "template weather")
 		return `<div class="card">
 		  <div class="card-body">
 			<h1>Weather Report: </h1>
 			<p class="card-text">${calculateUVIndex(data)}</p>
-			<p class="card-text"> ${data.data[0].weather.description} </p>
+			<p class="card-text"> ${data[0].weather.description} </p>
 			<p class="card-text"> ${lengthTripInfo(lengthTrip)}.</p>
 			<p class="card-text"> ${returnSnow(data)} </p>
 		  </div>
@@ -82,7 +83,7 @@ const updateFrontend = async (data, lengthTrip) => {
 
 
 	const calculateUVIndex = (data) => {
-		console.log("uv data", data)
+		console.log("uv data" , data)
 		if (data[0].uv > 8) {
 			return `The UV index is ${data[0].uv.toFixed()} today which is really high today make sure to wear sunscreen, and reapply every 2 hours!`;
 		} else if (data[0].uv > 6) {
