@@ -1,7 +1,7 @@
 const fetchCoordinates = async (event, defaultText, defaultDate) => {
 	event.preventDefault();
 	console.log('fetch coords running');
-	const zipcode = defaultText || returnZipcode();
+	const placename = defaultText || returnPlacename();
 	const date = defaultDate || returnDate();
 	const endDate = defaultDate || returnEndDate()
 	const url = 'http://localhost:8081/test';
@@ -11,7 +11,7 @@ const fetchCoordinates = async (event, defaultText, defaultDate) => {
 			'Content-Type': 'application/json',
 		},
 		body: JSON.stringify({
-			zipcode: zipcode,
+			placename: placename,
 			date: date,
 			end: endDate,
 			country: 'US'
@@ -51,9 +51,9 @@ function findOutHowFarAwayTheTripIs(currentDate,endDate, day, lon ,lat) {
 	
 }
 
-function returnZipcode() {
-	const zipcode = document.getElementById('zipcode').value;
-	return zipcode;
+function returnPlacename() {
+	const placename = document.getElementById('city').value;
+	return placename;
 }
 
 function returnDate() {

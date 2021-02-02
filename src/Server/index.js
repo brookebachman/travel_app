@@ -30,7 +30,7 @@ app.get('/', function(){
 
 app.post('/test', async function (req, res) {
 	const apikey = process.env.API_KEY_GEONAMES;
-	const Url = `http://api.geonames.org/postalCodeSearchJSON?postalcode=${req.body.zipcode}&maxRows=10&username=${apikey}&country=${req.body.country}`;
+	const Url = `http://api.geonames.org/postalCodeSearchJSON?placename=${req.body.placename}&maxRows=10&username=${apikey}&country=${req.body.country}`;
 	
 	try {
     let response = await fetch(Url);
