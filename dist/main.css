@@ -1,0 +1,5 @@
+@import url(https://fonts.googleapis.com/css2?family=Yellowtail&display=swap);
+html,body{margin:0;background:linear-gradient(0deg, #32accd 0%, #c789aa 50%, #eedc84 100%);height:115vh}#title{font-family:"Yellowtail",cursive;font-size:50px;grid-area:top2;text-align:center}#main-container{display:grid;padding:20px;grid-template-columns:1fr 4fr 1fr;grid-template-rows:1fr 2fr 4fr;grid-template-areas:'top1 top2 top3' 'left mid right' 'lowleft midbottom rightlow'}#picture{grid-area:mid;padding:20px}#form-container{grid-area:mid;border:8px white dotted;padding:20px;font-size:25px;font-family:sans-serif;margin:20px;text-align:center}#entry-holder{grid-area:midbottom;border:8px white dotted;padding:20px;font-size:25px;font-family:sans-serif;margin:20px;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;grid-template-areas:'left right' 'leftBottom rightBottom'}img{height:350px;width:700px}.card{box-shadow:0 4px 8px 0 rgba(0,0,0,0.2);transition:0.3s}.card:hover{box-shadow:0 8px 16px 0 rgba(0,0,0,0.2)}.container{padding:2px 16px}
+
+
+/*# sourceMappingURL=main.css.map*/
