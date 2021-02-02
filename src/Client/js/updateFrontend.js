@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
 
-const updateFrontend = async (data, lengthTrip) => {
+const updateFrontend = async (data, lengthTrip, location) => {
 	console.log('update frontend is running', data);
 	const mainDiv = document.getElementById('main-container');
 	const form = document.getElementById('form-container');
@@ -59,28 +59,7 @@ const updateFrontend = async (data, lengthTrip) => {
 		  </div>
 		</div>`;
 	};
-	// const templateExtras = (data) => {
-	// 	return `<div class="card" style="width: 18rem;">
-	// 	  <div class="card-body">
-			
-	// 		<p class="card-text">It looks like there are ${data[0].weather.description} today.</p>
-	// 		<p class="card-text">It looks like there are ${lengthTripInfo(lengthTrip)} today.</p>
-	
-	// 	  </div>
-	// 	</div>`;
-	// };
 
-	// const returnIcon = (data) => {
-	// 	if (data[0].snow > 1) {
-	// 		return '<i class="far fa-snowflake"></i>'
-	// 	} else if (data[0].precip > 3) {
-	// 		return '<i class="fas fa-umbrella"></i>';
-	// 	} else if (data[0].clouds > 50) {
-	// 		return '<i class="fas fa-cloud"></i>';
-	// 	} else {
-	// 		return '<i class="fas fa-sun"></i>';
-	// 	}
-	// }
 
 
 	const calculateUVIndex = (data) => {
