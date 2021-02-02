@@ -2,6 +2,7 @@ import fetch from 'node-fetch';
 
 const updateFrontend = async (results, lengthTrip)=> {
 	const data = results.data
+	console.log(lengthTrip, "lengthtrip")
 	const mainDiv = document.getElementById('main-container');
 	const form = document.getElementById('form-container');
 	const littleDiv = document.createElement('div');
@@ -21,12 +22,15 @@ const updateFrontend = async (results, lengthTrip)=> {
 	snow.id = 'snow';
 	littleDiv.appendChild(highTemp);
 	littleDiv.appendChild(uv);
+	
+	
 	highTemp.id = 'temp';
 	uv.id = 'uv';
 
 	console.log(data, 'update frontend weather');
 
 	const lengthTripInfo = (lengthTrip) => {
+		console.log(lengthTrip, "lengthTrip")
 		if (lengthTrip <= 1) {
 			return `Your trip is a day trip`;
 		} else {
@@ -34,7 +38,7 @@ const updateFrontend = async (results, lengthTrip)=> {
 		}
 		
 	};
-
+	
 
 	const returnSnow = (data) => {
 		if (data[0].snow) {
@@ -47,13 +51,13 @@ const updateFrontend = async (results, lengthTrip)=> {
 	};
 
 	const templateWeather = (data, lengthTrip) => {
-		console.log(data, "template weather")
+		console.log(data, "template weather", lengthTrip, "length trip")
 		return `<div class="card">
 		  <div class="card-body">
 			<h1>Weather Report: </h1>
 			<p class="card-text">${calculateUVIndex(data)}</p>
 			<p class="card-text"> ${data[0].weather.description} </p>
-			<p class="card-text"> ${lengthTripInfo(lengthTrip)}.</p>
+			<p class="card-text"> ${lengthTripInfo(lengthTrip)} </p>
 			<p class="card-text"> ${returnSnow(data)} </p>
 		  </div>
 		</div>`;
@@ -94,7 +98,7 @@ const updateFrontend = async (results, lengthTrip)=> {
 			return `The UV index is ${data[0].uv.toFixed()} today which is pretty low.`;
 		}
 	};
-	littleDiv.innerHTML += templateWeather(data);
+	littleDiv.innerHTML += templateWeather(data, lengthTrip);
 
 
 	// highTemp.innerHTML = `It is ${data[0].temp + 32} degrees today`;
