@@ -45,20 +45,18 @@ const updateFrontend = async (data, lengthTrip) => {
 	
 	};
 
-	// const templateWeather = (data) => {
-	// 	console.log(data.data[0], "templateweather")
-	// 	return `<div class="card">
-	// 	  <div class="card-body">
-	// 		<h1>Weather Report: </h1>
-			
-				
-	// 		<p class="card-text">${calculateUVIndex(data)}</p>
-	// 		<p class="card-text"> ${data.data[0].weather.description} </p>
-	// 		<p class="card-text"> ${lengthTripInfo(lengthTrip)}.</p>
-	// 		<p class="card-text"> ${returnSnow(data)} </p>
-	// 	  </div>
-	// 	</div>`;
-	// };
+	const templateWeather = (data) => {
+		
+		return `<div class="card">
+		  <div class="card-body">
+			<h1>Weather Report: </h1>
+			<p class="card-text">${calculateUVIndex(data)}</p>
+			<p class="card-text"> ${data.data[0].weather.description} </p>
+			<p class="card-text"> ${lengthTripInfo(lengthTrip)}.</p>
+			<p class="card-text"> ${returnSnow(data)} </p>
+		  </div>
+		</div>`;
+	};
 	// const templateExtras = (data) => {
 	// 	return `<div class="card" style="width: 18rem;">
 	// 	  <div class="card-body">
@@ -84,6 +82,7 @@ const updateFrontend = async (data, lengthTrip) => {
 
 
 	const calculateUVIndex = (data) => {
+		console.log("uv data", data)
 		if (data[0].uv > 8) {
 			return `The UV index is ${data[0].uv.toFixed()} today which is really high today make sure to wear sunscreen, and reapply every 2 hours!`;
 		} else if (data[0].uv > 6) {
@@ -94,7 +93,7 @@ const updateFrontend = async (data, lengthTrip) => {
 			return `The UV index is ${data[0].uv.toFixed()} today which is pretty low.`;
 		}
 	};
-	//littleDiv.innerHTML += templateWeather(data);
+	littleDiv.innerHTML += templateWeather(data);
 
 
 	// highTemp.innerHTML = `It is ${data[0].temp + 32} degrees today`;
@@ -150,7 +149,7 @@ const searchImages = async (element, second) => {
 
 		return await newResults[0];
 
-		//return response.hits[0].largeImageURL;
+		
 	} catch (error) {
 		console.log(error);
 	}
