@@ -1,80 +1,72 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const weatherBitWeekFetch = require('./fetchWeatherBitWeek')
+const weatherBitWeekFetch = require("./fetchWeatherBitWeek");
 // Initialize the main project folder
-app.use(express.static('dist'));
+app.use(express.static("dist"));
 // Setup empty JS object to act as endpoint for all routes
-;
 /* Dependencies */
-const bodyParser = require('body-parser')
+const bodyParser = require("body-parser");
 /* Middleware*/
 //Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 // Cors for cross origin allowance
-const cors = require('cors');
+const cors = require("cors");
 app.use(cors());
-const dotenv = require('dotenv')
-dotenv.config()
+const dotenv = require("dotenv");
+dotenv.config();
 
-const fetch = require('node-fetch');
-
-
+const fetch = require("node-fetch");
 
 const port = 8081;
-const server = app.listen(port, ()=>{})
+const server = app.listen(port, () => {});
 
-app.get('/', function(){
-  res.sendFile('dist/index.html')
-})
-
-app.post('/test', async function (req, res) {
-	const apikey = process.env.API_KEY_GEONAMES;
-	const Url = `http://api.geonames.org/postalCodeSearchJSON?placename=${req.body.placename}&maxRows=10&username=${apikey}&country=${req.body.country}`;
-	
-	try {
-    let response = await fetch(Url);
-    let data = await response.json();
-    console.log(data, "postalcodes data")
-    res.json(data)
-	} catch (error) {
-    console.log(error);
-    res.status(400).end()
-	}
+app.get("/", function (req, res) {
+  res.sendFile("dist/index.html");
 });
 
-app.post('/weatherbitcurrent', async function(req, res){
-  console.log(req.body, "req.body")
-  console.log("hit weatherbit current forecast")
-  const apikey = process.env.API_KEY_WEATHERBIT
-  const url = `https://api.weatherbit.io/v2.0/current?&lat=${req.body.lat}&lon=${req.body.lon}&key=${apikey}`
-  
-  try{
-    let response = await fetch(url)
-    let result = await response.json()
-   
-    
-    
-    console.log(result, "this is for current data weather")
-    res.json(result)
+app.post("/test", async function (req, res) {
+  const apikey = process.env.API_KEY_GEONAMES;
+  const Url = `http://api.geonames.org/postalCodeSearchJSON?placename=${req.body.placename}&maxRows=10&username=${apikey}&country=${req.body.country}`;
 
-  }catch (error){
-    console.log(error)
+  try {
+    let response = await fetch(Url);
+    let data = await response.json();
+    console.log(data, "postalcodes data");
+    res.json(data);
+  } catch (error) {
+    console.log(error);
+    res.status(400).end();
   }
-})
+});
 
-app.post('/weatherbitweek', async function(req, res){
-  console.log("hit weatherbit week weather api")
-  const apikey = process.env.API_KEY_WEATHERBIT
-  const url = `https://api.weatherbit.io/v2.0/forecast/daily?&lat=${req.body.lat}&lon=${req.body.lon}&key=${apikey}`
-  try{
-    let response = await fetch(url)
-    let result = await response.json()
-    console.log(result, "this is week data")
-    res.json(result)
+app.post("/weatherbitcurrent", async function (req, res) {
+  console.log(req.body, "req.body");
+  console.log("hit weatherbit current forecast");
+  const apikey = process.env.API_KEY_WEATHERBIT;
+  const url = `https://api.weatherbit.io/v2.0/current?&lat=${req.body.lat}&lon=${req.body.lon}&key=${apikey}`;
 
-  }catch (error){
-    console.log(error)
+  try {
+    let response = await fetch(url);
+    let result = await response.json();
+
+    console.log(result, "this is for current data weather");
+    res.json(result);
+  } catch (error) {
+    console.log(error);
   }
-})
+});
 
+app.post("/weatherbitweek", async function (req, res) {
+  console.log("hit weatherbit week weather api");
+  const apikey = process.env.API_KEY_WEATHERBIT;
+  const url = `https://api.weatherbit.io/v2.0/forecast/daily?&lat=${req.body.lat}&lon=${req.body.lon}&key=${apikey}`;
+  try {
+    let response = await fetch(url);
+    let result = await response.json();
+    console.log(result, "this is week data");
+    res.json(result);
+  } catch (error) {
+    console.log(error);
+  }
+});
